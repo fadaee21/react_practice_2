@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ShowTodo = ({ todoArr }) => {
-    console.log(todoArr)
+    // console.log(todoArr)
     return (
         <>
             {
@@ -15,6 +15,7 @@ const ShowTodo = ({ todoArr }) => {
                     )
                 })
             }
+            
         </>
     )
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import ShowTodo from './ShowTodo'
 
 const AddTodo = () => {
@@ -13,7 +14,7 @@ const AddTodo = () => {
     }
     return (
         <>
-            <div className="App">
+            <div>
                 <form onSubmit={handleSubmit} >
                     <input type={'text'} onChange={e => setTodo(e.target.value)} />
                     <button type='submit' >add todo</button>
@@ -21,6 +22,7 @@ const AddTodo = () => {
             </div>
 
             <ShowTodo todoArr={todoArr} />
+            
         </>
     );
 }

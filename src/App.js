@@ -1,10 +1,11 @@
 import React from 'react'
-import AddTodo from './AddTodo'
 import './App.css'
+import Counter from './Counter'
 const App = () => {
   return (
     <div className='App'>
-      <AddTodo />
+      <h5>App</h5>
+      <Counter />
     </div>
   )
 }
