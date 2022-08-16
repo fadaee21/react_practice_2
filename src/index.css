@@ -19,13 +19,3 @@ body {
   padding: 2rem;
 }
 
-input,
-button {
-  font: inherit;
-  padding: 1rem;
-}
-
-button {
-  display: block;
-  margin-bottom: 1rem;
-}
