@@ -28,7 +28,7 @@ const App = () => {
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<Register />} />
           <Route path='securityPage/*' element={<SecurityPage />} >
-            <Route index element={<PublicPage />} />
+            <Route path='publicPage' element={<PublicPage />} />
             <Route path='protectedPage' element={
               <RequireAuth>
                 <ProtectedPage />
