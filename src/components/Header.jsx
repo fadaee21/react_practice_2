@@ -9,6 +9,7 @@ const Header = () => {
             <Link to={"secondPage"} >Second Page</Link>
             <Link to={"users"} >User Page</Link>
             <Link to={"securityPage"} >Security Page</Link>
+            <Link to={"register"} >Register</Link>
 
         </div>
     )

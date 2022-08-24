@@ -1,19 +1,19 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import AuthStatus from './AuthState'
+
 
 const SecurityPage = () => {
+
     return (
-        <>
-            <div>SecurityPage</div>
-            <section>
-                <h3> go to welcome page</h3>
-                <Link to={'welcomePage'} >welcome Page</Link>
-                <Outlet />
-                <h3> go to goodbye page</h3>
-                <Link to={'goodbyePage'} >goodbye Page</Link>
-                <Outlet />
-            </section>
-        </>
+        <section>
+            <h1>security Page</h1>
+            <AuthStatus />
+            <h5><Link to={'publicPage'} >Public Page</Link></h5>
+            <h5><Link to={'protectedPage'} >Protected Page</Link></h5>
+            <hr />
+            <Outlet />
+        </section>
     )
 }
 
