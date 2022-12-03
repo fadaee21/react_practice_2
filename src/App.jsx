@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { miladi_be_shamsi } from "./utils";
+import { ExcelExport } from "./ExcelExport";
 
 const App = () => {
   const [uname, setUname] = useState("");
   const [pwd, setPwd] = useState("");
-  const [success, setSuccess] = useState(false);
   const [token, setToken] = useState("");
-  //  const urlData = "https://reqres.in/api/login";
-  // const urlData = "https://jsonplaceholder.typicode.com/users/1";
+  const [data, setData] = useState([]);
   // const urlData2 =
   //   "https://api.pm.kaaryar.ir/ta/user/all?pageNum=1&pageSize=10";
   const urlData = "https://api.pm.kaaryar.ir/auth/login";
-  // const urlData = "https://api.pm.kaaryar.ir/test/all";
+  const urlTestAll = "https://api.pm.kaaryar.ir/test/all";
 
   const getData = async () => {
     try {
@@ -24,16 +23,12 @@ const App = () => {
         },
         {
           headers: {
-            Accept: "application/json",
             "content-type": "application/json",
           },
         }
       );
-      setToken(response.data.message);
-      setSuccess(true);
-      console.log(response.data.message);
-
-      // userList();
+      setToken(response.data.authorization);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -42,35 +37,45 @@ const App = () => {
   const userList = async () => {
     try {
       let headersList = {
-        "Content-Type": "application/json",
         Authorization: token,
       };
 
       let reqOptions = {
-        url: "https://api.pm.kaaryar.ir/ta/user/all?pageNum=1&pageSize=10",
+        url: "https://api.pm.kaaryar.ir/teacher/user/all?pageNum=0&pageSize=10",
         method: "GET",
         headers: headersList,
       };
 
       let response = await axios.request(reqOptions);
-      console.log(response);
+      setData(response.data);
+      console.log(response.data);
     } catch (error) {
-      console.log("catch block");
+      console.log(error);
+    }
+  };
+
+  const getTestAll = async () => {
+    try {
+      const response = await axios.get(urlTestAll);
+      console.log(response);
+      console.log(response.data.message);
+    } catch (error) {
       console.log(error);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(uname, pwd);
     getData();
   };
 
-
+  const changeDate = () => {
+    console.log(miladi_be_shamsi(2022, 9, 16));
+  };
 
   return (
     <>
-      <h1>HELLO WORLD</h1>
+      <h1>usertestspring</h1>
       <form onSubmit={handleSubmit}>
         <input
           name="username"
@@ -85,13 +90,24 @@ const App = () => {
           type="password"
         />
         <br />
-        <button type="submit">LOGIN</button>
+        <button type="submit">get token</button>
       </form>
       <br />
-      <p>usertestspring</p>
+
       <button type="button" onClick={userList}>
         get user list
       </button>
+      <br />
+      <br />
+
+      <ExcelExport fileName={"excel export"} apiData={data} />
+
+      <br />
+      <br />
+      <button onClick={getTestAll}>get test all</button>
+      <br />
+      <br />
+      <button onClick={changeDate}>date</button>
     </>
   );
 };
