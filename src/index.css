@@ -13,8 +13,8 @@ code {
 }
 
 body {
-  background-color: #333;
-  color: whitesmoke;
+  background-color: rgb(131, 209, 207);
+  color: rgb(38, 22, 160);
   font-size: 2rem;
   padding: 2rem;
 }

@@ -1,9 +1,9 @@
 import React from 'react'
-import CourseList from './CourseList'
+import ReactSelect from './ReactSelect'
 
 const App = () => {
   return (
-    <CourseList/>
+    <ReactSelect/>
   )
 }
 
